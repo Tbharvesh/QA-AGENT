@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="139.977" timestamp="2025-07-05T23:29:49.495087+05:30" hostname="Slegion"><testcase classname="executor.tests.test_recruter_ai" name="test_signup_with_valid_data" time="36.633"><failure message="playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.&#10;Call log:&#10;  - waiting for locator(&quot;input[name='email']&quot;)">page = &lt;Page url='https://recruter.ai/signup'&gt;
+
+    def test_signup_with_valid_data(page: Page):
+        '''Test that a user can sign up successfully with correct information.'''
+        # Step: Navigate to the signup page.
+        page.goto("https://recruter.ai/signup")
+        # Step: Enter a valid name, a unique email, and a strong password.
+&gt;       page.fill("input[name='email']", "user@example.com")
+
+executor\tests\test_recruter_ai.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Python312\Lib\site-packages\playwright\sync_api\_generated.py:10125: in fill
+    self._sync(
+C:\Python312\Lib\site-packages\playwright\_impl\_page.py:898: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\playwright\_impl\_frame.py:562: in fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x000001B51E222C60&gt;
+cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x000001B51E250860&gt;, is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("input[name='email']")
+
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:558: TimeoutError</failure></testcase><testcase classname="executor.tests.test_recruter_ai" name="test_signup_with_an_already_registered_email" time="33.878"><failure message="playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.&#10;Call log:&#10;  - waiting for locator(&quot;input[name='email']&quot;)">page = &lt;Page url='https://recruter.ai/signup'&gt;
+
+    def test_signup_with_an_already_registered_email(page: Page):
+        '''Verify that the system prevents signup with an email that is already in use.'''
+        # Step: Navigate to the signup page.
+        page.goto("https://recruter.ai/signup")
+        # Step: Enter a name, an email address that is already registered, and a password.
+&gt;       page.fill("input[name='email']", "user@example.com")
+
+executor\tests\test_recruter_ai.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Python312\Lib\site-packages\playwright\sync_api\_generated.py:10125: in fill
+    self._sync(
+C:\Python312\Lib\site-packages\playwright\_impl\_page.py:898: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\playwright\_impl\_frame.py:562: in fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x000001B51E59E2A0&gt;
+cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x000001B51E5D6340&gt;, is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("input[name='email']")
+
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:558: TimeoutError</failure></testcase><testcase classname="executor.tests.test_recruter_ai" name="test_login_with_valid_credentials" time="33.305"><failure message="playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.&#10;Call log:&#10;  - waiting for locator(&quot;input[name='email']&quot;)">page = &lt;Page url='https://recruter.ai/login'&gt;
+
+    def test_login_with_valid_credentials(page: Page):
+        '''Test that a registered user can log in with their correct email and password.'''
+        # Step: Navigate to the login page.
+        page.goto("https://recruter.ai/login")
+        # Step: Enter the email and password of a registered user.
+&gt;       page.fill("input[name='email']", "user@example.com")
+
+executor\tests\test_recruter_ai.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Python312\Lib\site-packages\playwright\sync_api\_generated.py:10125: in fill
+    self._sync(
+C:\Python312\Lib\site-packages\playwright\_impl\_page.py:898: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\playwright\_impl\_frame.py:562: in fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x000001B51BA8D5E0&gt;
+cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x000001B51E251760&gt;, is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("input[name='email']")
+
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:558: TimeoutError</failure></testcase><testcase classname="executor.tests.test_recruter_ai" name="test_login_with_invalid_password" time="35.099"><failure message="playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.&#10;Call log:&#10;  - waiting for locator(&quot;input[name='email']&quot;)">page = &lt;Page url='https://recruter.ai/login'&gt;
+
+    def test_login_with_invalid_password(page: Page):
+        '''Verify that the system prevents login when an incorrect password is provided.'''
+        # Step: Navigate to the login page.
+        page.goto("https://recruter.ai/login")
+        # Step: Enter the email of a registered user.
+&gt;       page.fill("input[name='email']", "user@example.com")
+
+executor\tests\test_recruter_ai.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Python312\Lib\site-packages\playwright\sync_api\_generated.py:10125: in fill
+    self._sync(
+C:\Python312\Lib\site-packages\playwright\_impl\_page.py:898: in fill
+    return await self._main_frame.fill(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\playwright\_impl\_frame.py:562: in fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x000001B51E5D3170&gt;
+cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x000001B51DE5F560&gt;, is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Page.fill: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("input[name='email']")
+
+C:\Python312\Lib\site-packages\playwright\_impl\_connection.py:558: TimeoutError</failure></testcase></testsuite></testsuites>
