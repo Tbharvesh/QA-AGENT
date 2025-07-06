@@ -14,4 +14,16 @@ QA Agent is a smart testing assistant designed to automatically generate and run
 
 ---
 
+## 📦 Tech Stack
+
+| Category              | Tools Used                                                                 |
+|-----------------------|----------------------------------------------------------------------------|
+| **Language**          | Python 3.12+                                                               |
+| **Test Frameworks**   | [Playwright (sync API)](https://playwright.dev/python/docs/intro), [Pytest](https://docs.pytest.org/) |
+| **Test Runner Module**| `QuickTestRunner` – Custom test execution pipeline                         |
+| **Browser Automation**| Microsoft Playwright (Sync API for Chromium, Firefox, WebKit)              |
+| **Video Processing**  | [FFmpeg](https://ffmpeg.org/) – For recording/processing test session videos |
+| **UI Layer (optional)**| [Streamlit](https://streamlit.io/) – To visualize and trigger tests       |
+| **Version Control**   | Git & GitHub                                                               |
+| **Environment**       | Python virtual environment (`.venv`)                                       |
 
